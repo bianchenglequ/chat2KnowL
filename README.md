@@ -5,6 +5,8 @@
 
 <img src="https://gitee.com/bianchenglequ/NetCodeTop/raw/master/gzh.jpg" height="150">
 
+👉[点击这里查看教程](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MjM5MDE5MDM5NA==&action=getalbum&album_id=3246098834230001677&scene=173&subscene=&sessionid=svr_a74ac6a31fb&enterid=1703518458&from_msgid=2449943847&from_itemidx=1&count=3&nolastread=1#wechat_redirect)
+
 # 项目计划
 1、文件上传或网址输入：支持PDF、Doc；输入文件地址，自动下载；
 
