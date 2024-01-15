@@ -1,30 +1,30 @@
 <template>
   <div class="home">
-    <el-row>
-      <img alt="Vue logo" class="logo" src="../assets/logo.png">
-    </el-row>
-    <el-row>欢迎来到ChatKnowL!</el-row>
-    <el-row>
-      提供Al分析、阅读、问答工具，助你快速了解文档内容。
-    </el-row>
-    <router-link to="/chat">
-      <el-button class="chat" type="primary">点击这里开启</el-button>
-    </router-link>
+    <div class="main">
+      <el-row>
+        <img alt="Vue logo" class="logo" src="../assets/logo.png">
+      </el-row>
+      <el-row>欢迎来到ChatKnowL!</el-row>
+      <el-row>
+        提供Al分析、阅读、问答工具，助你快速了解文档内容。
+      </el-row>
+      <router-link to="/chat">
+        <el-button class="chat" type="primary">点击这里开启</el-button>
+      </router-link>
+    </div>
   </div>
 </template>
 
-<style>
+<style scoped>
 /*设置页面背景、页面的高度、间距设置为0*/
-html,body,#app {
+.home {
   background: #f7f7f7;
-  height: 85%;
-  padding: 0;
-  margin: 0;
+  height: 100%;
 }
 
 /*设置Home为页面上下居中*/
-.home {
-  height: 100%;
+.home .main {
+  height: 85%;
   /* 设置为 Flexbox */
   display: flex;
   flex-direction: column;
@@ -33,7 +33,7 @@ html,body,#app {
   /* 垂直居中对齐 */
   align-items: center;
   line-height: 45px;
-  font-family: "微软雅黑","宋体";
+  font-family: "微软雅黑", "宋体";
   font-weight: bold;
 }
 
@@ -43,9 +43,9 @@ html,body,#app {
   width: 60px;
   margin-bottom: 5px;
 }
+
 /* 设置按钮样式 */
-.chat.el-button{
+.chat.el-button {
   padding: 20px 15px;
   margin-top: 20px;
-}
-</style>
+}</style>

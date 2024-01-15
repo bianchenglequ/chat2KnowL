@@ -1,0 +1,16 @@
+{
+  "id": "4394204",
+  "name": "chat",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "11983543",
+      "name": "github",
+      "font_class": "github",
+      "unicode": "ea0b",
+      "unicode_decimal": 59915
+    }
+  ]
+}
