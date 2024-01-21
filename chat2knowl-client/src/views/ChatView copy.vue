@@ -15,22 +15,24 @@
             </el-icon>&nbsp;&nbsp;新建会话</el-button>
         </el-row>
         <div class="session">
-          <el-menu background-color="#162e43" active-text-color="#fff" :default-active="activeIndex" text-color="#fff">
+          <el-menu background-color="#162e43" active-text-color="#fff" :default-active="activeIndex + ''"
+            text-color="#fff">
             <el-menu-item v-for="(item, index) in menuList" :index="index + ''" :key="index"
-              :class="{ 'menu-item': true, 'menu-active': index + '' == activeIndex , 'menu-edit-mode': item.editMode}">
+              :class="{ 'menu-active': index == activeIndex, 'menu-item': true, 'menu-edit-mode': item.editMode }"
+              @click="activeIndex = index">
               <div style="overflow: hidden;width:98%">
                 <el-icon v-if="!item.editMode">
                   <ChatDotRound />
                 </el-icon>
                 <span v-if="!item.editMode">{{ item.name }}</span>
-                <el-input v-if="item.editMode" ref="refSessionInput" v-model="item.name"></el-input>
+                <el-input v-if="item.editMode" ref="refInput" v-model="item.name"></el-input>
               </div>
               <span v-if="!item.editMode" class="buttons buttons-normal">
                 <el-icon @click="editSession(item)">
                   <EditPen />
                 </el-icon>
-                <el-popconfirm title="删除后无法恢复，是否继续删除？" confirm-button-text="删除" cancel-button-text="取消" placement="top"
-                  :width="250" @confirm="deleteSession(index)">
+                <el-popconfirm title="删除后无法恢复，是否继续删除？" confirm-button-text="删除"
+                  cancel-button-text="取消" placement="top" :width="250" @confirm="deleteSession(index)">
                   <template #reference>
                     <el-icon>
                       <Delete />
@@ -38,7 +40,7 @@
                   </template>
                 </el-popconfirm>
               </span>
-              <span v-if="item.editMode" class="buttons">
+              <span v-if="item.editMode" class="buttons buttons-edit">
                 <el-icon @click="item.editMode = false">
                   <Select />
                 </el-icon>
@@ -119,31 +121,33 @@ const mpQrCodePath = require("@/assets/service/mp-qrcode.jpg")
 const weixinPath = require("@/assets/service/weixin.png")
 
 //菜单
-const activeIndex = ref('0')
+const activeIndex = ref(0)
 const menuList = ref([{ name: "默认会话", editMode: false }])
 //新会话
 const newSession = () => {
   menuList.value.push({ name: "新会话", editMode: false })
 }
+
 //移除会话
 const deleteSession = (index: number) => {
   menuList.value.splice(index, 1)
 }
 //编辑会话
-const editSession = (row: any) => {
+const editSession = (item: any) => {
   menuList.value.map((item) => {
     item.editMode = false
   })
-  row.editMode = true
-  row.oldName = row.name
+  item.editMode = true
+  item.oldName = item.name
   nextTick(() => {
     refSessionInput.value[0].focus()
   })
 }
 //取消编辑会话
-const cancelEditSession = (row:any)=>{
-  row.name = row.oldName
-  row.editMode = false
+const cancelEditSession = (item:any)=>{
+  console.log(11)
+  item.name = item.oldName
+  item.editMode = false
 }
 </script>
 
@@ -201,20 +205,6 @@ const cancelEditSession = (row:any)=>{
       white-space: nowrap;
       overflow: hidden;
       word-break: break-all;
-
-      .buttons {
-        right:0;
-        background: inherit;
-      }
-
-      .buttons-normal {
-        position: absolute;
-        z-index: 999;
-        display: none;
-      }
-    }
-    .menu-item:hover .buttons {
-      display: block;
     }
 
     .menu-edit-mode {
@@ -228,12 +218,24 @@ const cancelEditSession = (row:any)=>{
       /deep/.el-input__wrapper {
         border: none;
         box-shadow: 0 0 0 0px;
-        padding:0;
       }
 
       /deep/.el-input {
         vertical-align: middle;
       }
+    }
+
+    .menu-item .buttons {
+      background: inherit;
+    }
+    .menu-item .buttons-normal {
+      right: 0;
+      position: absolute;
+      z-index: 999;
+      display: none;
+    }
+    .menu-item:hover .buttons {
+      display: block;
     }
   }
 
@@ -272,5 +274,4 @@ const cancelEditSession = (row:any)=>{
     padding-top: 20px;
     font-size: 18px;
   }
-}
-</style>
+}</style>
