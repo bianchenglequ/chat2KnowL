@@ -15,10 +15,11 @@
             </el-icon>&nbsp;&nbsp;新建会话</el-button>
         </el-row>
         <div class="session">
-          <el-menu background-color="#162e43" active-text-color="#fff" :default-active="activeIndex" text-color="#fff">
+          <el-menu background-color="#162e43" active-text-color="#fff" :default-active="activeIndex" text-color="#fff"
+          @select="handleSessionSelect">
             <el-menu-item v-for="(item, index) in menuList" :index="index + ''" :key="index"
               :class="{ 'menu-item': true, 'menu-active': index + '' == activeIndex , 'menu-edit-mode': item.editMode}">
-              <div style="overflow: hidden;width:98%">
+              <div style="overflow: hidden;width:98%;text-align: left;">
                 <el-icon v-if="!item.editMode">
                   <ChatDotRound />
                 </el-icon>
@@ -145,6 +146,10 @@ const cancelEditSession = (row:any)=>{
   row.name = row.oldName
   row.editMode = false
 }
+//选择会话
+const handleSessionSelect = (key: string) => {
+  activeIndex.value = key
+}
 </script>
 
 <style scoped>
@@ -213,10 +218,13 @@ const cancelEditSession = (row:any)=>{
         display: none;
       }
     }
-    .menu-item:hover .buttons {
-      display: block;
-    }
 
+    .menu-item:hover{
+      background: #264259;
+      .buttons {
+        display: block;
+      }
+    }
     .menu-edit-mode {
       background: #fff;
       border-radius: 5px;
