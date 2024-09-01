@@ -104,7 +104,9 @@
             </router-link>
           </el-row>
         </el-header>
-        <el-main>主要区域</el-main>
+        <el-main style="background-color: rgb(249, 251, 252);padding: 10px;">
+          <ChatArea/>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -112,6 +114,7 @@
 
 <script lang="ts" setup>
 import { ref, nextTick } from 'vue'
+import ChatArea from '@/components/Chat/ChatArea.vue'
 const refSessionInput = ref()
 
 //图片
@@ -241,6 +244,12 @@ const handleSessionSelect = (key: string) => {
 
       /deep/.el-input {
         vertical-align: middle;
+      }
+    }
+    .menu-edit-mode:hover
+    {
+      .el-icon {
+        color: #fff;
       }
     }
   }
