@@ -1,6 +1,7 @@
 <template>
   <el-container class="chat-area">
     <el-aside width="300px" class="chat-file-area">
+      <ChatFileArea :fileList="fileList"/>
     </el-aside>
     <el-aside class="chat-file-preview-area">
     </el-aside>
@@ -9,6 +10,24 @@
   </el-container>
 </template>
 <script lang="ts" setup>
+import {ref, onMounted} from 'vue'
+import ChatFileArea from '@/components/Chat/ChatFileArea.vue'
+
+// 定义一个响应式变量fileList，用于存储文档列表
+const fileList = ref()
+
+// 在组件挂载后执行初始化操作
+onMounted(()=>{
+   //获取聊天信息
+  getChat() 
+})
+
+// 获取聊天信息
+const getChat = () => {
+  // TODO: 从后端获取聊天记录的实际逻辑
+  // 目前仅为模拟数据，实际开发中需替换为真正的数据获取逻辑
+  fileList.value = [{ name: ".Net面试题", editMode: false }, { name: "C#基础知识", editMode: false }]
+}
 </script>
 <style scoped>
 .chat-area{
