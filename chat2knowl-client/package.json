@@ -10,6 +10,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
     "axios": "^1.6.2",
+    "chat2knowl": "file:",
     "core-js": "^3.8.3",
     "element-plus": "^2.4.4",
     "vue": "^3.2.13",
@@ -29,7 +30,8 @@
     "@vue/eslint-config-typescript": "^9.1.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
-    "typescript": "~4.5.5"
+    "typescript": "~4.5.5",
+    "vue3-pdf-app": "^1.0.3"
   },
   "eslintConfig": {
     "root": true,
